@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-leaderboard:
+    strategy:
+      matrix:
+        node: [ 16, 18 ]
+      fail-fast: true
+      max-parallel: 1
+    name: Test leaderboard examples on node ${{ matrix.node }}
+    runs-on: macos-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install Deps and Build
+        id: validation
+        continue-on-error: true
+        run: |
+          pushd leaderboard/web
+            npm ci
+            npm run lint
+            npm run build
+          popd
+
+      - name: Flag Job Failure
+        if: ${{ steps.validation.outcome == 'failure' }}
+        run: exit 1
