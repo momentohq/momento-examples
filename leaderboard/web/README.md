@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+# Leaderboard Demo Using the Momento Web SDK
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+In this directory, you'll find a simple Vite + React web application to showcase some of the key features of Momento Leaderboard. 
+A simple leaderboard component displays each element's ID, score, and rank (in either ascending or descending order), and you can use the entry form to add, update, or remove elements.
 
-Currently, two official plugins are available:
+![Screenshot of the Momento Leaderboard demo web app](./leaderboard-screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prerequisites
 
-## Expanding the ESLint configuration
+In order for this project to run, you will need:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- A Momento API key. You can get one from the [Momento Console](https://console.gomomento.com). Check out the [getting started](https://docs.momentohq.com/cache/getting-started) guide for more information on obtaining an API key.
+- A Momento cache, which you can create in the [Momento Console](https://console.gomomento.com). Check out the [getting started](https://docs.momentohq.com/cache/getting-started) guide for more information on creating a cache.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## Getting Started
+
+First, install all dependencies:
+
+```
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Create a `.env` file in this directory and provide your Momento API key and pre-created cache name:
+
+```
+VITE_MOMENTO_API_KEY="<your-api-key>"
+VITE_MOMENTO_CACHE_NAME="<your-cache-name>"
+```
+
+Then run the project and navigate to `http://localhost:5173/` to see the demo in action!
+
+```
+npm run dev
+```
