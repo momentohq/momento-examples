@@ -1,12 +1,13 @@
-import './App.css'
+import './styles/globals.css'
 import Leaderboard from './components/leaderboard'
+import Header from './components/header'
 
 function App() {
   return (
-    <>
-      <h1>Momento Leaderboard</h1>
+    <div>
+      <Header />
       <Leaderboard />
-    </>
+    </div>
   )
 }
 
